@@ -15,7 +15,7 @@ http://seckie.github.io/jquery-ticker/demo
 ## Usage
 
 ### Step01
-Load jquery.js and this script in "head" element
+Load jquery.js and this plugin in "head" element
 
 ```
 <script src="jquery.js"></script>
@@ -23,13 +23,13 @@ Load jquery.js and this script in "head" element
 ```
 
 ### Step02
-Set style "float:left" to elements of content.
+Set style ``display:inline-block: float:left;`` to elements of content.
 
 ```
 <style>
 .ticker-item {
-  float: left;
   display: inline-block;
+  float: left;
 }
 </style>
 
@@ -73,7 +73,7 @@ $(function() {
 <td>content</td>
 <td>".ticker-item"</td>
 <td>String<br>(Selector String)</td>
-<td>Content elements selector (__required__)</td>
+<td>Content elements selector (<b>required</b>)</td>
 </tr>
 <tr>
 <td>duration</td>
