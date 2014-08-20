@@ -32,7 +32,8 @@
       duration: 500,
       wrapperClassName: 'ticker-wrapper',
       innerClassName: 'ticker-inner',
-      content: '.ticker-item'
+      content: '.ticker-item',
+      hoverStop: true
     },
     initialize: function() {
       var opt, self;
@@ -70,10 +71,12 @@
       boxWidth = this.getWholeWidth(this.content);
       this.baseDuration = this.options.duration * boxWidth / 20;
       this.animate();
-      this.wrapper.hover(function() {
-        self.inner.stop();
-        return self.inner2.stop();
-      }, $.proxy(this.animate, this));
+      if (this.options.hoverStop === true) {
+        this.wrapper.hover(function() {
+          self.inner.stop();
+          return self.inner2.stop();
+        }, $.proxy(this.animate, this));
+      }
       return this;
     },
     animate: function() {

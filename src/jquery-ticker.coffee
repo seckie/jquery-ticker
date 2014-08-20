@@ -34,6 +34,7 @@
       wrapperClassName: 'ticker-wrapper'
       innerClassName: 'ticker-inner'
       content: '.ticker-item'
+      hoverStop: true
 
     initialize: () ->
       self = @
@@ -74,10 +75,11 @@
       # Initial animation
       @animate()
       # add event
-      @wrapper.hover(() ->
-        self.inner.stop()
-        self.inner2.stop()
-      , $.proxy(@animate, @))
+      if @options.hoverStop is true
+        @wrapper.hover(() ->
+          self.inner.stop()
+          self.inner2.stop()
+        , $.proxy(@animate, @))
       return @
 
     animate: () ->

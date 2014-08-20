@@ -93,6 +93,12 @@ $(function() {
 <td>String</td>
 <td>Inner DIV that has this className will generate by the plugin.</td>
 </tr>
+<tr>
+<td>hoverStop</td>
+<td>true</td>
+<td>Boolean</td>
+<td>Whether stop animation when mouseover</td>
+</tr>
 </tbody>
 </table>
 
