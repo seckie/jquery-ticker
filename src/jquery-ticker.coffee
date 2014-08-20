@@ -43,6 +43,10 @@
         overflow: 'hidden'
       )
       @content = @element.find(opt.content)
+      if !@content[0]
+        console.error('\"content\" parameter element was not found')
+        return @
+
       @wrapper = $('<div class="' + opt.wrapperClassName + '" />')
       @wrapper.css(
         overflow: 'hidden'

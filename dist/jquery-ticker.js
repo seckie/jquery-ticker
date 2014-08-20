@@ -43,6 +43,10 @@
         overflow: 'hidden'
       });
       this.content = this.element.find(opt.content);
+      if (!this.content[0]) {
+        console.error('\"content\" parameter element was not found');
+        return this;
+      }
       this.wrapper = $('<div class="' + opt.wrapperClassName + '" />');
       this.wrapper.css({
         overflow: 'hidden',
