@@ -6,9 +6,9 @@
  * @require    jquery.js
  * @since      2014-08-20
 ###
-'use strict'
 
 (($, window, document) ->
+  'use strict'
   DEBUG = false
 
   $.fn.ticker = (options) ->
