@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<title>jquery-ticker Demo</title>
+<script src="./jquery.min.js"></script>
+<script src="../dist/jquery-ticker.js"></script>
+<script>
+$(function() {
+$('.ticker').ticker({
+  duration: 500,
+  content: 'ticker-item'
+});
+});
+</script>
+<style>
+.ticker {
+	width: 600px;
+	border: 1px solid #ccc;
+}
+.ticker ul {
+	margin: 0;
+	padding: 0;
+}
+.ticker ul:after {
+	content:""; display:block; clear:both;
+}
+.ticker li {
+	display: inline-block;
+	float: left;
+	margin: 0 10px 0 0;
+	padding: 0;
+}
+
+/* for Debug mode */
+.inner1 { background-color: #fcc; }
+.inner2 { background-color: #ccf; }
+</style>
+</head>
+<body>
+
+<h1>jquery-ticker Demo</h1>
+
+<section>
+	<h2>text list</h2>
+	<div class="ticker">
+	<ul>
+	<li class="ticker-item">Text List 1 Text List 1 Text List 1 Text List 1 Text List 1 </li>
+	<li class="ticker-item">Text List 2 Text List 2 Text List 2 Text List 2 Text List 2 Text List 2 Text List 2 </li>
+  <li class="ticker-item">Text List 3 Text List 3 Text List 3 Text List 3 Text List 3 </li>
+  <li class="ticker-item">Text List 4 Text List 4 Text List 4 Text List 4 Text List 4 Text List 4 Text List 4 </li>
+	</ul>
+	<!--/#ticker1--></div>
+</section>
+
+</body>
+</html>
