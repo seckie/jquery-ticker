@@ -50,7 +50,8 @@
       this.inner = $('<div class="' + opt.innerClassName + '" />');
       this.inner.css({
         cssFloat: 'left',
-        display: 'inline-block'
+        display: 'inline-block',
+        minWidth: $(window).width()
       });
       this.inner.append(this.content);
       this.inner2 = this.inner.clone();
@@ -79,7 +80,7 @@
       var box, boxMarginL, boxWidth, distance, duration, self;
       self = this;
       box = this.boxIndex === 0 ? this.inner : this.inner2;
-      boxWidth = box.width();
+      boxWidth = box.outerWidth();
       boxMarginL = parseInt(box.css('margin-left'), 10) || 0;
       distance = boxMarginL === 0 ? boxWidth : boxWidth + boxMarginL;
       duration = Math.floor(this.baseDuration * (distance / boxWidth));

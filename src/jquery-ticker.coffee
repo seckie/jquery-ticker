@@ -51,6 +51,7 @@
       @inner.css(
         cssFloat: 'left'
         display: 'inline-block'
+        minWidth: $(window).width()
       )
       @inner.append(@content)
       @inner2 = @inner.clone()
@@ -83,7 +84,7 @@
       self = @
       # Animation target box is alternately changed
       box = if @boxIndex is 0 then @inner else @inner2
-      boxWidth = box.width()
+      boxWidth = box.outerWidth()
       boxMarginL = parseInt(box.css('margin-left'), 10) or 0
       # Compute remaining distance
       distance = if boxMarginL is 0 then boxWidth else boxWidth + boxMarginL
