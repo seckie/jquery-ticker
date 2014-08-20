@@ -26,13 +26,13 @@
     this.initialize();
     return this;
   };
-  return Ticker.prototype = {
+  Ticker.prototype = {
     defaultOptions: {
       element: {},
       duration: 500,
       wrapperClassName: 'ticker-wrapper',
       innerClassName: 'ticker-inner',
-      contentSelector: '.ticker-item'
+      content: '.ticker-item'
     },
     initialize: function() {
       var opt, self;
@@ -41,7 +41,7 @@
       this.element.css({
         overflow: 'hidden'
       });
-      this.content = this.element.find(opt.contentSelector);
+      this.content = this.element.find(opt.content);
       this.wrapper = $('<div class="' + opt.wrapperClassName + '" />');
       this.wrapper.css({
         overflow: 'hidden',
@@ -80,7 +80,7 @@
       self = this;
       box = this.boxIndex === 0 ? this.inner : this.inner2;
       boxWidth = box.width();
-      boxMarginL = parseInt(box.css('margin-left')) || 0;
+      boxMarginL = parseInt(box.css('margin-left'), 10) || 0;
       distance = boxMarginL === 0 ? boxWidth : boxWidth + boxMarginL;
       duration = Math.floor(this.baseDuration * (distance / boxWidth));
       box.animate({

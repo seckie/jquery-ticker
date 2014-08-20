@@ -110,5 +110,5 @@
       )
       return width
 
-
+  return
 )(jQuery, @, @document)
