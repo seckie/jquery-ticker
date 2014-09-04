@@ -7,7 +7,7 @@
  * @since      2014-08-20
 ###
 
-(($, window, document) ->
+(($, window) ->
   'use strict'
   DEBUG = false
 
@@ -81,10 +81,13 @@
       # add event
       if @options.hoverStop is true
         @wrapper.hover(() ->
-          self.inner.stop()
-          self.inner2.stop()
+          self.stop()
         , $.proxy(@animate, @))
       return @
+
+    stop: () ->
+      @inner.stop()
+      @inner2.stop()
 
     animate: () ->
       self = @
@@ -118,4 +121,4 @@
       return width
 
   return
-)(jQuery, @, @document)
+)(jQuery, @)

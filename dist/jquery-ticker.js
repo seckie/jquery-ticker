@@ -7,7 +7,7 @@
  * @require    jquery.js
  * @since      2014-08-20
  */
-(function($, window, document) {
+(function($, window) {
   'use strict';
   var DEBUG, Ticker;
   DEBUG = false;
@@ -77,11 +77,14 @@
       this.animate();
       if (this.options.hoverStop === true) {
         this.wrapper.hover(function() {
-          self.inner.stop();
-          return self.inner2.stop();
+          return self.stop();
         }, $.proxy(this.animate, this));
       }
       return this;
+    },
+    stop: function() {
+      this.inner.stop();
+      return this.inner2.stop();
     },
     animate: function() {
       var box, boxMarginL, boxWidth, distance, duration, self;
@@ -111,4 +114,4 @@
       return width;
     }
   };
-})(jQuery, this, this.document);
+})(jQuery, this);
