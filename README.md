@@ -22,6 +22,13 @@ Load jquery.js and this plugin in "head" element
 <script src="jquery.ticker.js"></script>
 ```
 
+If you want to use "Velocity.js" animation, you have to load velocity.js in addition.
+
+```
+<script src="velocity.js"></script>
+```
+
+
 ### Step02
 Set style ``display:inline-block: float:left;`` to elements of content.
 
@@ -98,6 +105,12 @@ $(function() {
 <td>true</td>
 <td>Boolean</td>
 <td>Whether stop animation when mouseover</td>
+</tr>
+<tr>
+<td>velocityJs</td>
+<td>false</td>
+<td>Boolean</td>
+<td>Animate method'll be replaced by <a href="http://julian.com/research/velocity/">Velocity.js</a> when you set it "true"</td>
 </tr>
 </tbody>
 </table>
