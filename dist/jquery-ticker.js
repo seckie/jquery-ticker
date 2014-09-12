@@ -33,7 +33,8 @@
       wrapperClassName: 'ticker-wrapper',
       innerClassName: 'ticker-inner',
       content: '.ticker-item',
-      hoverStop: true
+      hoverStop: true,
+      velocityJs: false
     },
     initialize: function() {
       var opt, self;
@@ -83,27 +84,42 @@
       return this;
     },
     stop: function() {
-      this.inner.stop();
-      return this.inner2.stop();
+      if (this.options.velocityJs === true) {
+        this.inner.velocity('stop');
+        this.inner2.velocity('stop');
+      } else {
+        this.inner.stop();
+        this.inner2.stop();
+      }
+      return this;
     },
     animate: function() {
-      var box, boxMarginL, boxWidth, distance, duration, self;
+      var box, boxMarginL, boxWidth, distance, duration, opt, prop, self;
       self = this;
       box = this.boxIndex === 0 ? this.inner : this.inner2;
       boxWidth = box.outerWidth();
       boxMarginL = parseInt(box.css('margin-left'), 10) || 0;
       distance = boxMarginL === 0 ? boxWidth : boxWidth + boxMarginL;
       duration = Math.floor(this.baseDuration * (distance / boxWidth));
-      box.animate({
+      prop = {
         'margin-left': '-=' + distance + 'px'
-      }, duration, 'linear', function() {
-        self.boxIndex = self.boxIndex === 0 ? 1 : 0;
-        box.appendTo(self.wrapper).css({
-          'margin-left': 0
-        });
-        return self.animate();
-      });
-      return this;
+      };
+      opt = {
+        duration: duration,
+        easing: 'linear',
+        complete: function() {
+          self.boxIndex = self.boxIndex === 0 ? 1 : 0;
+          box.appendTo(self.wrapper).css({
+            'margin-left': 0
+          });
+          return self.animate();
+        }
+      };
+      if (this.options.velocityJs === true) {
+        return box.velocity(prop, opt);
+      } else {
+        return box.animate(prop, opt);
+      }
     },
     getWholeWidth: function($box) {
       var width;

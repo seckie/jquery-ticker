@@ -15,9 +15,11 @@ paths = {
   coffeeDest: 'dist/jquery-ticker.js'
   staticJs: [
     'bower_components/jquery/dist/jquery.min.js'
+    'bower_components/velocity/velocity.js'
   ]
   staticJsDest: [
     'demo/jquery.min.js'
+    'demo/velocity.js'
   ]
   stylus: 'src/*.styl'
   stylusDest: 'demo'

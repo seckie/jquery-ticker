@@ -35,6 +35,7 @@
       innerClassName: 'ticker-inner'
       content: '.ticker-item'
       hoverStop: true
+      velocityJs: false
 
     initialize: () ->
       self = @
@@ -86,8 +87,13 @@
       return @
 
     stop: () ->
-      @inner.stop()
-      @inner2.stop()
+      if @options.velocityJs is true
+        @inner.velocity('stop')
+        @inner2.velocity('stop')
+      else
+        @inner.stop()
+        @inner2.stop()
+      return @
 
     animate: () ->
       self = @
@@ -100,18 +106,23 @@
       # Compute animation duration
       duration = Math.floor(@baseDuration * (distance / boxWidth))
       # Animation
-      box.animate(
+      prop =
         'margin-left': '-=' + distance + 'px'
-      , duration, 'linear', () ->
-        # Change target box
-        self.boxIndex = if self.boxIndex is 0 then 1 else 0
-        box.appendTo(self.wrapper).css(
-          'margin-left': 0
-        )
-        # Recursive Processing
-        self.animate()
-      )
-      return @
+      opt =
+        duration: duration
+        easing: 'linear'
+        complete: () ->
+          # Change target box
+          self.boxIndex = if self.boxIndex is 0 then 1 else 0
+          box.appendTo(self.wrapper).css(
+            'margin-left': 0
+          )
+          # Recursive Processing
+          self.animate()
+      if @options.velocityJs is true
+        return box.velocity(prop, opt)
+      else
+        return box.animate(prop, opt)
 
     getWholeWidth: ($box) ->
       width = 0

@@ -4,12 +4,14 @@
 <meta charset="UTF-8" />
 <title>jquery-ticker Demo</title>
 <script src="./jquery.min.js"></script>
+<script src="./velocity.js"></script>
 <script src="../dist/jquery-ticker.js"></script>
 <script>
 $(function() {
 $('.ticker').ticker({
   duration: 500,
-  content: '.ticker-item'
+  content: '.ticker-item',
+  velocityJs: true
 });
 });
 </script>
@@ -53,11 +55,12 @@ $('.ticker').ticker({
 	<!--/#ticker1--></div>
 </section>
 
+
 <nav>
 <h2>Other demos</h2>
 <ul>
-<li class="ticker-item"><em>jQuery animate() (default)</em></li>
-<li class="ticker-item"><a href="velocity.html">Velocity.js animation</a></li>
+<li class="ticker-item"><a href="./">jQuery animate() (default)</a></li>
+<li class="ticker-item"><em>Velocity.js animation</em></li>
 </ul>
 </nav>
 </body>
