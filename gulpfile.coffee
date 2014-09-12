@@ -6,6 +6,7 @@ coffeelint = require('gulp-coffeelint')
 jshint = require('gulp-jshint')
 stylus = require('gulp-stylus')
 nib = require('nib')
+browserSync = require('browser-sync')
 
 fs = require('fs')
 
@@ -44,6 +45,7 @@ gulp.task('coffee', (callback) ->
     .pipe(coffeelint.reporter())
     .pipe(coffeeStream)
     .pipe(gulp.dest('dist'))
+    .pipe(browserSync.reload({ stream: true }))
 )
 
 
@@ -77,6 +79,7 @@ gulp.task('stylus', (callback) ->
   gulp.src(paths.stylus)
     .pipe(stream)
     .pipe(gulp.dest(paths.stylusDest))
+    .pipe(browserSync.reload({ stream: true }))
 )
 
 
@@ -96,13 +99,26 @@ gulp.task('copy', () ->
  * watch
 ###
 
-gulp.task('watch', () ->
+gulp.task('watch', [ 'browser-sync' ], (cb) ->
   gulp.watch(paths.coffee, [
     'coffee'
   ])
   gulp.watch(paths.scss, [
     'compassDev'
   ])
+  cb()
+)
+
+
+###
+ * static server
+###
+gulp.task('browser-sync', () ->
+  browserSync(
+    server:
+      baseDir: './'
+    startPath: '/demo'
+  )
 )
 
 
